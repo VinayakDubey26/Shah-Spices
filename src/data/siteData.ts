@@ -1,16 +1,14 @@
 import {
-  Building2,
-  Factory,
+  ClipboardCheck,
   Handshake,
   MapPin,
   PackageCheck,
-  PackageOpen,
   Phone,
+  Search,
   ShieldCheck,
-  ShoppingBag,
-  Store,
+  Settings,
+  Sparkles,
   Truck,
-  Utensils,
   Wheat,
 } from 'lucide-react';
 
@@ -73,15 +71,38 @@ export const whyUs = [
   },
 ];
 
-export const industries = [
-  { title: 'Food Manufacturers', icon: Factory, tone: 'manufacturers' },
-  { title: 'Spice Brands', icon: ShoppingBag, tone: 'brands' },
-  { title: 'Retail Chains', icon: Store, tone: 'retail' },
-  { title: 'Distributors', icon: Building2, tone: 'distribution' },
-  { title: 'Wholesalers', icon: PackageOpen, tone: 'wholesale' },
+export const processSteps = [
+  {
+    title: 'Sourcing',
+    description: 'Partner-approved chilli procurement.',
+    icon: Search,
+  },
+  {
+    title: 'Cleaning',
+    description: 'Removal of impurities and careful sorting.',
+    icon: Sparkles,
+  },
+  {
+    title: 'Processing',
+    description: 'Preparation according to business requirements.',
+    icon: Settings,
+  },
+  {
+    title: 'Quality Testing',
+    description: 'Batch verification and inspection.',
+    icon: ClipboardCheck,
+  },
+  {
+    title: 'Packaging',
+    description: 'Custom and bulk packaging options.',
+    icon: PackageCheck,
+  },
+  {
+    title: 'Dispatch',
+    description: 'Reliable delivery planning.',
+    icon: Truck,
+  },
 ];
-
-export const processSteps = ['Sourcing', 'Cleaning', 'Processing', 'Quality Testing', 'Packaging', 'Dispatch'];
 
 export const stats = [
   { value: 400, suffix: 'KG', label: 'Bulk Packaging' },
@@ -90,11 +111,19 @@ export const stats = [
 ];
 
 export const supplyMarkers = [
-  { city: 'North', x: 48, y: 24 },
-  { city: 'West', x: 32, y: 52 },
-  { city: 'South', x: 45, y: 78 },
-  { city: 'East', x: 66, y: 50 },
-  { city: 'Central', x: 50, y: 52 },
+  { city: 'Rajasthan', x: 36, y: 35, labelPosition: 'left' },
+  { city: 'Delhi NCR', x: 45, y: 28, labelPosition: 'right' },
+  { city: 'Gujarat', x: 29, y: 51, labelPosition: 'left' },
+  { city: 'Madhya Pradesh', x: 47, y: 47, labelPosition: 'right' },
+  { city: 'Maharashtra', x: 39, y: 62, labelPosition: 'left' },
+  { city: 'Karnataka', x: 41, y: 77, labelPosition: 'right' },
+];
+
+export const supplyBenefits = [
+  { label: '400KG Bulk Packaging', icon: PackageCheck },
+  { label: 'Custom Packaging', icon: PackageCheck },
+  { label: 'Pan India Delivery', icon: Truck },
+  { label: 'Export Ready', icon: ShieldCheck },
 ];
 
 export const contactDetails = [

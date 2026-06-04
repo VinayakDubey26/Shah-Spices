@@ -15,10 +15,10 @@ import { SectionHeading } from './components/SectionHeading';
 import logo from '../assets/logo.png';
 import {
   contactDetails,
-  industries,
   phoneNumber,
   processSteps,
   products,
+  supplyBenefits,
   trustBarItems,
   whatsappLink,
   whyUs,
@@ -133,7 +133,7 @@ function App() {
               {whyUs.map((item, index) => {
                 const Icon = item.icon;
                 return (
-                  <Reveal className="premium-card why-card" key={item.title} delay={index * 0.07}>
+                  <Reveal className="why-card" key={item.title} delay={index * 0.07}>
                     <span className="why-card-icon">
                       <Icon size={22} />
                     </span>
@@ -146,73 +146,69 @@ function App() {
           </div>
         </section>
 
-        <section className="section-pad">
-          <div className="container industries-section">
-            <SectionHeading
-              eyebrow="INDUSTRIES WE SERVE"
-              title="Supplying chilli products across trade channels"
-              description="Shah Spices supports bulk chilli requirements for businesses across manufacturing, distribution and retail supply chains."
-            />
-            <div className="industry-grid">
-              {industries.map((industry, index) => {
-                const Icon = industry.icon;
-                return (
-                  <Reveal className={`industry-card ${industry.tone}`} key={industry.title} delay={index * 0.06}>
-                    <div className="industry-visual" aria-hidden="true">
-                      <span className="industry-surface" />
-                      <span className="industry-shape industry-shape-one" />
-                      <span className="industry-shape industry-shape-two" />
-                      <span className="industry-detail" />
-                    </div>
-                    <div className="industry-overlay">
-                      <span className="industry-icon">
-                        <Icon size={18} />
-                      </span>
-                      <span>{industry.title}</span>
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
         <section id="process" className="section-pad muted-section">
-          <div className="container">
+          <div className="container process-section">
             <SectionHeading
-              eyebrow="Process"
+              eyebrow="PROCESS"
               title="From sourcing to dispatch, every stage is business-ready"
+              description="A structured process built to support consistent quality, packaging requirements and dependable bulk supply."
             />
-            <Reveal className="timeline">
+            <motion.div
+              className="timeline"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
+            >
               <motion.div
                 className="timeline-line"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
+                initial={{ scaleX: 0, scaleY: 0 }}
+                whileInView={{ scaleX: 1, scaleY: 1 }}
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 1.1, ease: 'easeOut' }}
               />
               {processSteps.map((step, index) => (
-                <div className="timeline-step" key={step}>
-                  <span>{index + 1}</span>
-                  <strong>{step}</strong>
-                </div>
+                <motion.article className="timeline-step" key={step.title} variants={heroItemVariant}>
+                  <span className="timeline-step-icon">
+                    <step.icon size={21} />
+                  </span>
+                  <span className="timeline-step-number">{String(index + 1).padStart(2, '0')}</span>
+                  <strong>{step.title}</strong>
+                  <p>{step.description}</p>
+                </motion.article>
               ))}
-            </Reveal>
+            </motion.div>
           </div>
         </section>
 
         <section className="section-pad">
-          <div className="container supply-grid">
-            <Reveal>
-              <span className="eyebrow">Pan India supply</span>
+          <div className="container supply-grid supply-section">
+            <Reveal className="supply-copy">
+              <span className="eyebrow">PAN INDIA SUPPLY</span>
               <h2>Serving Businesses Across India</h2>
               <p>
-                Shah Spices supports growing trade requirements with reliable dispatch planning, scalable packaging
-                options and quote-led procurement conversations.
+                Supplying premium chilli products to manufacturers, distributors and wholesalers across multiple
+                states with reliable dispatch planning and scalable packaging options.
               </p>
-              <span className="export-tag">Export Ready</span>
+              <motion.div
+                className="supply-benefits"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={{ visible: { transition: { staggerChildren: 0.08, delayChildren: 0.12 } } }}
+              >
+                {supplyBenefits.map((benefit) => {
+                  const Icon = benefit.icon;
+                  return (
+                  <motion.span key={benefit.label} className="supply-benefit-pill" variants={heroItemVariant}>
+                    <Icon size={17} />
+                    {benefit.label}
+                  </motion.span>
+                  );
+                })}
+              </motion.div>
             </Reveal>
-            <Reveal delay={0.12}>
+            <Reveal className="supply-map-wrap" delay={0.12}>
               <IndiaMap />
             </Reveal>
           </div>
@@ -222,13 +218,13 @@ function App() {
           <div className="container">
             <Reveal className="cta-panel">
               <span className="eyebrow">Request a quote</span>
-              <h2>Looking For A Reliable Chilli Products Partner?</h2>
+              <h2>Need Bulk Chilli Products For Your Business?</h2>
               <p>
-                Connect with Shah Spices for premium quality products, competitive pricing and dependable supply.
+                Connect with Shah Spices for premium quality chilli products, dependable supply and competitive bulk pricing.
               </p>
               <div className="cta-row centered">
                 <a className="btn primary" href="#contact">
-                  Request Quote
+                  Request Bulk Quote
                   <ClipboardList size={18} />
                 </a>
                 <a className="btn secondary" href={whatsappLink} target="_blank" rel="noreferrer">
@@ -269,19 +265,19 @@ function App() {
             <Reveal className="quote-form" delay={0.12}>
               <label>
                 Name
-                <input type="text" placeholder="Your name" />
+                <input name="name" type="text" autoComplete="name" placeholder="Your name" />
               </label>
               <label>
                 Company Name
-                <input type="text" placeholder="Company / firm name" />
+                <input name="company" type="text" autoComplete="organization" placeholder="Company / firm name" />
               </label>
               <label>
                 Phone Number
-                <input type="tel" placeholder={phoneNumber} />
+                <input name="phone" type="tel" autoComplete="tel" placeholder={phoneNumber} />
               </label>
               <label>
                 Requirement
-                <textarea placeholder="Product, quantity, packaging and delivery requirement" />
+                <textarea name="requirement" placeholder="Product, quantity, packaging and delivery requirement" />
               </label>
               <a className="btn primary full" href={whatsappLink} target="_blank" rel="noreferrer">
                 <Send size={18} />

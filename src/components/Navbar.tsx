@@ -38,11 +38,17 @@ export function Navbar() {
         </span>
       </a>
 
-      <button className="menu-toggle" onClick={() => setIsOpen((value) => !value)} aria-label="Toggle menu">
+      <button
+        className="menu-toggle"
+        onClick={() => setIsOpen((value) => !value)}
+        aria-label="Toggle menu"
+        aria-expanded={isOpen}
+        aria-controls="primary-navigation"
+      >
         {isOpen ? <X size={22} /> : <Menu size={22} />}
       </button>
 
-      <nav className={isOpen ? 'nav-links open' : 'nav-links'} aria-label="Primary navigation">
+      <nav id="primary-navigation" className={isOpen ? 'nav-links open' : 'nav-links'} aria-label="Primary navigation">
         {navLinks.map((link) => (
           <a
             className={activeLink === link ? 'active' : undefined}
