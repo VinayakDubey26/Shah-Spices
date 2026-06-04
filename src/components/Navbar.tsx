@@ -1,6 +1,7 @@
-import { Menu, MessageCircle, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import logo from '../../assets/logo.png';
+import whatsappIcon from '../../assets/whatsapp.svg';
 import { navLinks, whatsappLink } from '../data/siteData';
 
 export function Navbar() {
@@ -66,7 +67,7 @@ export function Navbar() {
 
       <div className="nav-actions">
         <a className="whatsapp-pill" href={whatsappLink} target="_blank" rel="noreferrer">
-          <MessageCircle size={18} />
+          <img className="whatsapp-icon-img" src={whatsappIcon} alt="" aria-hidden="true" />
           <span>WhatsApp Us</span>
         </a>
       </div>

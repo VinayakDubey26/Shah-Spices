@@ -3,9 +3,7 @@ import {
   Check,
   ClipboardList,
   Mail,
-  MessageCircle,
   Phone,
-  Send,
 } from 'lucide-react';
 import { IndiaMap } from './components/IndiaMap';
 import { Navbar } from './components/Navbar';
@@ -13,6 +11,7 @@ import { ProductCard } from './components/ProductCard';
 import { Reveal } from './components/Reveal';
 import { SectionHeading } from './components/SectionHeading';
 import logo from '../assets/logo.png';
+import whatsappIcon from '../assets/whatsapp.svg';
 import {
   contactDetails,
   phoneNumber,
@@ -72,7 +71,6 @@ function App() {
                     Talk To Sales
                   </motion.a>
                   <motion.a className="btn secondary" href={whatsappLink} target="_blank" rel="noreferrer" variants={heroItemVariant}>
-                    <MessageCircle size={18} />
                     WhatsApp Us
                   </motion.a>
                 </motion.div>
@@ -228,7 +226,6 @@ function App() {
                   <ClipboardList size={18} />
                 </a>
                 <a className="btn secondary" href={whatsappLink} target="_blank" rel="noreferrer">
-                  <MessageCircle size={18} />
                   WhatsApp Us
                 </a>
               </div>
@@ -280,7 +277,6 @@ function App() {
                 <textarea name="requirement" placeholder="Product, quantity, packaging and delivery requirement" />
               </label>
               <a className="btn primary full" href={whatsappLink} target="_blank" rel="noreferrer">
-                <Send size={18} />
                 Request Quote on WhatsApp
               </a>
             </Reveal>
@@ -325,6 +321,9 @@ function App() {
         </div>
         <div className="container copyright">Copyright 2026 Shah Spices. All rights reserved.</div>
       </footer>
+      <a className="floating-whatsapp" href={whatsappLink} target="_blank" rel="noreferrer" aria-label="WhatsApp Shah Spices">
+        <img className="floating-whatsapp-icon" src={whatsappIcon} alt="" aria-hidden="true" />
+      </a>
     </div>
   );
 }

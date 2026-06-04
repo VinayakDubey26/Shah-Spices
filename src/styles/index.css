@@ -228,16 +228,26 @@ textarea {
   min-height: 50px;
   padding: 0 20px;
   border: 1px solid rgba(255, 255, 255, 0.28);
-  background: linear-gradient(135deg, #11833e, #1fa855);
+  background: #25D366;
   color: #fff;
   line-height: 1;
-  box-shadow:
-    0 13px 26px rgba(31, 168, 85, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  animation: softPulse 2.8s ease-in-out infinite;
+  box-shadow: none;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
+}
+
+.whatsapp-icon-img {
+  display: block;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.btn svg {
+  display: block;
+  flex: 0 0 auto;
 }
 
 .whatsapp-pill span,
@@ -254,9 +264,11 @@ textarea {
 
 .whatsapp-pill:hover {
   transform: translateY(-1px);
-  box-shadow:
-    0 16px 32px rgba(31, 168, 85, 0.27),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: none;
+}
+
+.floating-whatsapp {
+  display: none;
 }
 
 .hero {
@@ -1121,7 +1133,7 @@ p {
 
 .india-map {
   position: relative;
-  min-height: 610px;
+  min-height: 640px;
   overflow: hidden;
   border: 1px solid rgba(76, 47, 22, 0.08);
   border-radius: 32px;
@@ -1131,20 +1143,27 @@ p {
   box-shadow: 0 26px 66px rgba(76, 47, 22, 0.13);
 }
 
-.india-map-graphic {
+.india-map-stage {
   position: absolute;
-  inset: 44px;
   z-index: 1;
+  top: 44%;
+  left: 50%;
+  width: min(calc(100% - 52px), 560px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+}
+
+.india-map-graphic {
   display: block;
-  width: calc(100% - 88px);
-  height: calc(100% - 88px);
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   opacity: 0.96;
 }
 
 .map-marker-wrap {
   position: absolute;
-  z-index: 3;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   transform: translate(-50%, -50%);
@@ -1152,46 +1171,60 @@ p {
 
 .map-marker {
   position: relative;
-  display: block;
-  width: 20px;
-  height: 20px;
-  border: 4px solid #fff;
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #fff;
   border-radius: 50%;
-  background: linear-gradient(135deg, #a71417, #c5161d);
-  box-shadow: 0 0 0 7px rgba(197, 22, 29, 0.16);
+  background: linear-gradient(135deg, #8f1115, #c5161d);
+  color: #fff;
+  font-size: 0.58rem;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow:
+    0 0 0 4px rgba(197, 22, 29, 0.12),
+    0 8px 16px rgba(76, 47, 22, 0.1);
 }
 
-.map-marker::after {
-  content: '';
+.map-legend {
   position: absolute;
-  inset: 6px;
-  border-radius: inherit;
-  background: #d7a547;
+  left: 24px;
+  right: 24px;
+  bottom: 22px;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
 }
 
-.map-marker-label {
-  position: absolute;
-  top: 50%;
-  width: max-content;
-  max-width: 150px;
-  padding: 5px 8px;
+.map-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
   border: 1px solid rgba(76, 47, 22, 0.08);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.82);
   color: rgba(32, 21, 16, 0.76);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 850;
   line-height: 1;
-  box-shadow: 0 8px 20px rgba(76, 47, 22, 0.08);
-  transform: translateY(-50%);
+  box-shadow: 0 8px 18px rgba(76, 47, 22, 0.07);
 }
 
-.map-marker-wrap.label-right .map-marker-label {
-  left: 28px;
-}
-
-.map-marker-wrap.label-left .map-marker-label {
-  right: 28px;
+.map-legend strong {
+  display: inline-flex;
+  width: 17px;
+  height: 17px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #9f1117;
+  color: #fff;
+  font-size: 0.58rem;
 }
 
 .cta-panel {
@@ -1379,8 +1412,7 @@ p {
     display: none;
   }
 
-  .nav-links.open,
-  .navbar.menu-open .nav-actions {
+  .nav-links.open {
     display: flex;
   }
 
@@ -1509,39 +1541,44 @@ p {
   }
 
   .india-map {
-    min-height: 430px;
+    min-height: 460px;
     border-radius: 22px;
   }
 
-  .india-map-graphic {
-    inset: 24px;
-    width: calc(100% - 48px);
-    height: calc(100% - 48px);
+  .india-map-stage {
+    top: 42%;
+    width: min(calc(100% - 28px), 430px);
   }
 
   .map-marker {
     width: 16px;
     height: 16px;
     border-width: 3px;
+    font-size: 0.52rem;
   }
 
-  .map-marker-label {
-    max-width: 108px;
-    padding: 4px 7px;
-    font-size: 0.64rem;
+  .map-legend {
+    right: 14px;
+    bottom: 16px;
+    left: 14px;
+    gap: 6px;
   }
 
-  .map-marker-wrap.label-right .map-marker-label {
-    left: 22px;
+  .map-legend span {
+    padding: 6px 8px;
+    font-size: 0.62rem;
   }
 
-  .map-marker-wrap.label-left .map-marker-label {
-    right: 22px;
+  .map-legend strong {
+    width: 15px;
+    height: 15px;
+    font-size: 0.52rem;
   }
 
   .navbar {
     top: 12px;
     width: calc(100% - 24px);
+    grid-template-columns: auto 1fr auto auto;
     height: 72px;
     padding: 8px 10px;
     border-radius: 999px;
@@ -1554,6 +1591,10 @@ p {
   .logo-frame {
     width: 140px;
     height: 56px;
+  }
+
+  .menu-toggle {
+    grid-column: 4;
   }
 
   .footer-logo-frame {
@@ -1578,63 +1619,79 @@ p {
   }
 
   .hero {
-    height: 100svh;
     min-height: 100svh;
-    background: url('../../assets/mobile.png') center bottom / cover no-repeat var(--surface-strong);
+    height: auto;
+    background:
+      url('../../assets/mobile.png') center bottom / cover no-repeat,
+      var(--surface-strong);
   }
 
   .hero-content {
     justify-content: center;
     align-items: flex-start;
-    padding: clamp(96px, 12svh, 120px) 18px 0;
+    min-height: 100svh;
+    padding: clamp(116px, 14svh, 138px) 18px clamp(280px, 42svh, 390px);
     text-align: center;
   }
 
   .hero-copy {
-    width: min(100%, 460px);
+    width: min(100%, 440px);
     margin: 0 auto;
   }
 
   .hero-copy .eyebrow {
     margin-inline: auto;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     font-size: 0.68rem;
   }
 
   .hero-copy h1 {
-    margin-bottom: 20px;
-    font-size: clamp(1.82rem, 7.8vw, 3rem);
-    line-height: 1.05;
+    max-width: 94%;
+    margin: 0 auto 18px;
+    font-size: clamp(2.6rem, 11vw, 3.6rem);
+    line-height: 0.88;
+    text-align: center;
+    text-shadow: 0 2px 14px rgba(255, 248, 238, 0.9), 0 10px 26px rgba(76, 47, 22, 0.18);
   }
 
   .hero-copy p {
-    max-width: 390px;
+    max-width: 90%;
     margin-inline: auto;
-    font-size: 0.9rem;
-    line-height: 1.56;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+    text-shadow: 0 1px 10px rgba(255, 248, 238, 0.86), 0 8px 20px rgba(76, 47, 22, 0.14);
   }
 
-  .hero-copy .cta-row {
-    justify-content: center;
-    margin: 24px 0 18px;
-  }
-
-  .hero-copy .btn {
-    min-height: 48px;
-    padding: 0 18px;
-    font-size: 0.9rem;
-  }
-
+  .hero-copy .cta-row,
   .hero-copy .trust-badges {
-    justify-content: center;
-    gap: 8px;
-    max-width: 360px;
-    margin-inline: auto;
+    display: none;
   }
 
-  .hero-copy .trust-badges span {
-    padding: 7px 9px;
-    font-size: 0.74rem;
+  .floating-whatsapp {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9999;
+    display: flex;
+    width: 58px;
+    height: 58px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 999px;
+    background: #25D366;
+    color: #fff;
+    box-shadow: none;
+  }
+
+  .floating-whatsapp-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    flex: 0 0 auto;
   }
 
   h1 {
@@ -1746,50 +1803,29 @@ p {
 
 @media (max-width: 360px) and (max-height: 700px) {
   .hero-content {
-    padding: 86px 14px 0;
+    padding: 98px 14px clamp(250px, 38svh, 320px);
   }
 
   .hero-copy {
-    width: min(100%, 292px);
+    width: min(100%, 304px);
   }
 
   .hero-copy .eyebrow {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     padding: 6px 9px;
-    font-size: 0.58rem;
+    font-size: 0.6rem;
   }
 
   .hero-copy h1 {
     margin-bottom: 14px;
-    font-size: 1.55rem;
-    line-height: 1.02;
+    font-size: 2.35rem;
+    line-height: 0.88;
   }
 
   .hero-copy p {
-    max-width: 292px;
-    font-size: 0.78rem;
-    line-height: 1.36;
-  }
-
-  .hero-copy .cta-row {
-    gap: 8px;
-    margin: 16px 0 12px;
-  }
-
-  .hero-copy .btn {
-    min-height: 44px;
-    padding: 0 12px;
-    font-size: 0.78rem;
-  }
-
-  .hero-copy .trust-badges {
-    max-width: 292px;
-    gap: 6px;
-  }
-
-  .hero-copy .trust-badges span {
-    padding: 5px 7px;
-    font-size: 0.64rem;
+    max-width: 90%;
+    font-size: 0.86rem;
+    line-height: 1.42;
   }
 }
 
@@ -1808,27 +1844,20 @@ p {
   }
 
   .india-map {
-    min-height: 390px;
+    min-height: 430px;
   }
 
-  .india-map-graphic {
-    inset: 18px;
-    width: calc(100% - 36px);
-    height: calc(100% - 36px);
+  .india-map-stage {
+    width: calc(100% - 18px);
   }
 
-  .map-marker-label {
-    max-width: 92px;
-    padding: 4px 6px;
+  .map-legend {
+    bottom: 14px;
+  }
+
+  .map-legend span {
+    padding: 5px 7px;
     font-size: 0.58rem;
-  }
-
-  .map-marker-wrap.label-right .map-marker-label {
-    left: 18px;
-  }
-
-  .map-marker-wrap.label-left .map-marker-label {
-    right: 18px;
   }
 
   .product-card {

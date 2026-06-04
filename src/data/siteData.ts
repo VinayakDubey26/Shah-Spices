@@ -111,12 +111,11 @@ export const stats = [
 ];
 
 export const supplyMarkers = [
-  { city: 'Rajasthan', x: 36, y: 35, labelPosition: 'left' },
-  { city: 'Delhi NCR', x: 45, y: 28, labelPosition: 'right' },
-  { city: 'Gujarat', x: 29, y: 51, labelPosition: 'left' },
-  { city: 'Madhya Pradesh', x: 47, y: 47, labelPosition: 'right' },
-  { city: 'Maharashtra', x: 39, y: 62, labelPosition: 'left' },
-  { city: 'Karnataka', x: 41, y: 77, labelPosition: 'right' },
+  { city: 'Delhi NCR', x: 43, y: 25 },
+  { city: 'Gujarat', x: 24, y: 55 },
+  { city: 'Maharashtra', x: 38, y: 67 },
+  { city: 'Madhya Pradesh', x: 52, y: 53 },
+  { city: 'Karnataka', x: 43, y: 82 },
 ];
 
 export const supplyBenefits = [

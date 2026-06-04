@@ -5,22 +5,33 @@ import { supplyMarkers } from '../data/siteData';
 export function IndiaMap() {
   return (
     <div className="india-map" aria-label="Pan India supply map illustration">
-      <img className="india-map-graphic" src={indiaMapGraphic} alt="" aria-hidden="true" />
-      {supplyMarkers.map((marker, index) => (
-        <span
-          key={marker.city}
-          className={`map-marker-wrap label-${marker.labelPosition}`}
-          style={{ left: `${marker.x}%`, top: `${marker.y}%` }}
-          title={marker.city}
-        >
-          <motion.span
-            className="map-marker"
-            animate={{ scale: [1, 1.35, 1], boxShadow: ['0 0 0 7px rgba(197, 22, 29, 0.16)', '0 0 0 13px rgba(184, 132, 44, 0)', '0 0 0 7px rgba(197, 22, 29, 0.16)'] }}
-            transition={{ duration: 2.4, repeat: Infinity, delay: index * 0.24, ease: 'easeInOut' }}
-          />
-          <span className="map-marker-label">{marker.city}</span>
-        </span>
-      ))}
+      <div className="india-map-stage">
+        <img className="india-map-graphic" src={indiaMapGraphic} alt="" aria-hidden="true" />
+        {supplyMarkers.map((marker, index) => (
+          <span
+            key={marker.city}
+            className="map-marker-wrap"
+            style={{ left: `${marker.x}%`, top: `${marker.y}%` }}
+            title={marker.city}
+          >
+            <motion.span
+              className="map-marker"
+              animate={{ scale: [1, 1.18, 1], boxShadow: ['0 0 0 4px rgba(197, 22, 29, 0.12)', '0 0 0 10px rgba(184, 132, 44, 0)', '0 0 0 4px rgba(197, 22, 29, 0.12)'] }}
+              transition={{ duration: 2.8, repeat: Infinity, delay: index * 0.22, ease: 'easeInOut' }}
+            >
+              {index + 1}
+            </motion.span>
+          </span>
+        ))}
+      </div>
+      <div className="map-legend" aria-label="Map marker legend">
+        {supplyMarkers.map((marker, index) => (
+          <span key={marker.city}>
+            <strong>{index + 1}</strong>
+            {marker.city}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
