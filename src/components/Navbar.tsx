@@ -34,9 +34,7 @@ export function Navbar() {
   return (
     <header className={['navbar', isOpen ? 'menu-open' : '', isScrolled ? 'scrolled' : ''].filter(Boolean).join(' ')}>
       <a className="brand" href="#home" aria-label="Shah Spices home">
-        <span className="logo-frame">
-          <img className="brand-logo" src={logo} alt="Shah Spices" />
-        </span>
+        <img className="brand-logo" src={logo} alt="Shah Spices" />
       </a>
 
       <button

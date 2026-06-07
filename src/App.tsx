@@ -288,9 +288,7 @@ function App() {
         <div className="container footer-grid">
           <div>
             <a className="brand" href="#home">
-              <span className="footer-logo-frame">
-                <img className="footer-logo" src={logo} alt="Shah Spices" />
-              </span>
+              <img className="footer-logo" src={logo} alt="Shah Spices" />
             </a>
             <p>Manufacturer and supplier of Whole Red Chillies, Chilli Powder and Chilli Seeds.</p>
           </div>
